@@ -18,11 +18,11 @@ Documentation will show more complicated model - weight is presented in lbs and 
 ---
 Again for requested functionaliy of:
 
-> For requested IATA Airport Code and date will respond with following :  
->  a. Number of flights departing from this airport,  
->  b. Number of flights arriving to this airport,  
->  c. Total number (pieces) of baggage arriving to this airport,  
->  d. Total number (pieces) of baggage departing from this airport.  
+> 2. For requested IATA Airport Code and date will respond with following :  
+> a. Number of flights departing from this airport,  
+> b. Number of flights arriving to this airport,  
+> c. Total number (pieces) of baggage arriving to this airport,  
+> d. Total number (pieces) of baggage departing from this airport.  
 
 In documentation you can see DTO with appriopriate fields.
 
