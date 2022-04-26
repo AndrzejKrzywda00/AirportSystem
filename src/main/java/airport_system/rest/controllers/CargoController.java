@@ -5,7 +5,6 @@ import airport_system.rest.services.CargoService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -23,7 +22,7 @@ public class CargoController {
 
     @ApiOperation(value = "Add cargo entities", notes = "There are constraints")
     @PostMapping("")
-    public void post(@Validated @RequestBody List<Cargo> cargo) {
+    public void post(@RequestBody List<Cargo> cargo) {
         service.save(cargo);
     }
 }

@@ -5,7 +5,9 @@ import airport_system.rest.services.FlightsService;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+
 import java.util.List;
+
 import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @SpringBootTest
@@ -27,12 +29,6 @@ public class FlightTest {
         assertThrows(RuntimeException.class, () -> service.save(List.of(wrongId)));
         assertThrows(RuntimeException.class, () -> service.save(List.of(wrongFlightNumber)));
         assertThrows(RuntimeException.class, () -> service.save(List.of(wrongIATACode)));
-    }
-
-    // test if summary was calculated correctly
-    @Test
-    public void testSummaryGeneration() {
-
     }
 
 }

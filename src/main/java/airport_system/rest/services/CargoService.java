@@ -1,15 +1,15 @@
 package airport_system.rest.services;
 
-import airport_system.rest.util.UnitConverter;
 import airport_system.rest.dto.Baggage;
 import airport_system.rest.dto.Cargo;
 import airport_system.rest.entities.CargoEntity;
 import airport_system.rest.repositories.CargoRepository;
+import airport_system.rest.util.UnitConverter;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
+
 import java.util.List;
 import java.util.Objects;
-import java.util.stream.Collectors;
 
 @Service
 public record CargoService(ModelMapper modelMapper, CargoRepository repository) {

@@ -1,13 +1,13 @@
 package airport_system.rest.controllers;
 
-import airport_system.rest.dto.FlightSummary;
 import airport_system.rest.dto.Flight;
+import airport_system.rest.dto.FlightSummary;
 import airport_system.rest.services.FlightsService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
+
 import java.util.List;
 
 @RestController
@@ -34,7 +34,7 @@ public class FlightsController {
 
     @ApiOperation(value = "Add flight entities")
     @PostMapping("")
-    public void post(@Validated @RequestBody List<Flight> flights) {
+    public void post(@RequestBody List<Flight> flights) {
         service.save(flights);
     }
 
