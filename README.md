@@ -9,9 +9,9 @@ API documentation is available in runtime under: http://localhost:8080/swagger-u
 This application is a solution to the task, which is the part of recruitment process. I implemented two requested functionalities.
 
 > 1. For requested Flight Number and date will respond with following
->  a. Cargo Weight for requested Flight
->  b. Baggage Weight for requested Flight
->  c. Total Weight for requested Flight
+> a. Cargo Weight for requested Flight
+> b. Baggage Weight for requested Flight
+> c. Total Weight for requested Flight
 
 Documentation will show more complicated model - weight is presented in lbs and kgs.
 
