@@ -7,7 +7,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 class AirportSystemApplicationTests {
 
 	@Test
-	void contextLoads() {
+	void fullTest() {
 	}
 
 }

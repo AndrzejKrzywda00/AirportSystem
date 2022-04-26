@@ -9,6 +9,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import java.util.Objects;
+import java.util.stream.Collectors;
 
 @Service
 public record CargoService(ModelMapper modelMapper, CargoRepository repository) {
@@ -16,8 +17,12 @@ public record CargoService(ModelMapper modelMapper, CargoRepository repository) 
     // ------ POST ------
 
     public void save(List<Cargo> cargo) {
-        var cargoEntities = cargo.stream().map(this::mapToCargoEntity).toList();
-        repository.saveAll(cargoEntities);
+        if(validate(cargo))
+        {
+            var cargoEntities = cargo.stream().map(this::mapToCargoEntity).toList();
+            repository.saveAll(cargoEntities);
+        }
+        else throw new RuntimeException("Provided data does not pass validation requirements");
     }
 
     private CargoEntity mapToCargoEntity(Cargo cargo) {
@@ -63,6 +68,30 @@ public record CargoService(ModelMapper modelMapper, CargoRepository repository) 
         else return new UnitConverter().convertLbsToKgs(baggage.getWeight());
     }
 
+    private boolean validate(List<Cargo> cargo) {
+        return cargo.stream().map(this::validateCargo).reduce(Boolean::logicalAnd).get();
+    }
+
+    private boolean validateCargo(Cargo cargo) {
+        return
+        cargo.getFlightId() >= 0 &&
+        validateBaggageList(cargo.getBaggage()) &&
+        validateBaggageList(cargo.getCargo());
+    }
+
+    private boolean validateBaggageList(List<Baggage> baggage) {
+        return baggage.stream().map(this::validateBaggage).reduce(Boolean::logicalAnd).get();
+    }
+
+    private boolean validateBaggage(Baggage baggage) {
+        return
+        baggage.getId() >= 0 &&
+        baggage.getWeight() >= 1 &&
+        baggage.getWeight() <= 999 &&
+        baggage.getWeightUnit().matches("(kg|lb)") &&
+        baggage.getPieces() >= 1 &&
+        baggage.getPieces() <= 999;
+    }
 
     // ------ GET ------
 

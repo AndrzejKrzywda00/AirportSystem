@@ -46,7 +46,34 @@ public record FlightsService(ModelMapper modelMapper,
     // ------ POST -------
 
     public void save(List<Flight> flights) {
-         flightsRepository.saveAll(flights.stream().map(flight -> modelMapper.map(flight, FlightEntity.class)).collect(Collectors.toList()));
+
+        if(validateFlights(flights))
+        {
+            flightsRepository
+                    .saveAll(flights
+                            .stream()
+                            .map(flight -> modelMapper.map(flight, FlightEntity.class))
+                            .collect(Collectors.toList()));
+        }
+        else throw new RuntimeException("Wrong data provided");
+    }
+
+    private boolean validateFlights(List<Flight> flights) {
+        var validations = flights.stream().map(this::validateFlight).toList();
+        return areAllTrue(validations);
+    }
+
+    private boolean validateFlight(Flight flight) {
+        return
+        flight.getFlightId() >= 0 &&
+        flight.getFlightNumber() >= 1000 &&
+        flight.getFlightNumber() <= 9999 &&
+        flight.getArrivalAirportIATACode().matches("[A-Z]{3}") &&
+        flight.getDepartureAirportIATACode().matches("[A-Z]{3}");
+    }
+
+    public static boolean areAllTrue(List<Boolean> list) {
+        return list.stream().reduce(Boolean::logicalAnd).get();
     }
 
 }
