@@ -8,7 +8,6 @@ import org.springframework.web.servlet.config.annotation.EnableWebMvc;
 Ideas to implement:
 	8. Eliminate 500 internal server error (!)
 	9. Build tests for API (!!!)
-	10. Write README.md
  */
 
 @EnableWebMvc

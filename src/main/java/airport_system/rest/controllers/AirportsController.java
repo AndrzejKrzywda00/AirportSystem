@@ -21,7 +21,7 @@ public class AirportsController {
     /*
     Implementation of task 2. of the application
      */
-    @ApiOperation(value = "get summary object of airport by IATA code and date")
+    @ApiOperation(value = "Get summary object of airport by IATA code and date")
     @GetMapping("/IATA={iata}/date={date}")
     public AirportSummary get(@PathVariable String iata, @PathVariable String date) {
         return service.getSummaryOfSelectedAirport(iata, date);

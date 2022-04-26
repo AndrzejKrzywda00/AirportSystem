@@ -18,7 +18,6 @@ public class FlightsController {
 
     private final FlightsService service;
 
-    // testing -- to be removed
     @GetMapping("/all")
     public List<Flight> get() {
         return service.getAll();
@@ -33,7 +32,7 @@ public class FlightsController {
         return service.getSummaryByFlightNumberAndDate(flightNumber, date);
     }
 
-    @ApiOperation(value = "Add flight data")
+    @ApiOperation(value = "Add flight entities")
     @PostMapping("")
     public void post(@Validated @RequestBody List<Flight> flights) {
         service.save(flights);

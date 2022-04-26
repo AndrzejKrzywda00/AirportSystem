@@ -23,11 +23,4 @@ public class CargoController {
     public void post(@Validated @RequestBody List<Cargo> cargo) {
         service.save(cargo);
     }
-
-    // testing -- to be removed
-    @GetMapping("/all")
-    public List<CargoEntity> getAll() {
-        return service.getAll();
-    }
-
 }
