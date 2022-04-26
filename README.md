@@ -28,4 +28,4 @@ In documentation you can see DTO with appriopriate fields.
 
 ---
 Last but not least - testing.
-In documentation there are two tests available - one if server is responding, second performs all tests.
+Tests of API are written in test/java/airport_system

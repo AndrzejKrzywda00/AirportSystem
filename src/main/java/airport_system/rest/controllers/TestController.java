@@ -1,6 +1,5 @@
 package airport_system.rest.controllers;
 
-import airport_system.rest.services.TestService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -14,18 +13,9 @@ import org.springframework.web.bind.annotation.RestController;
 @RequiredArgsConstructor
 public class TestController {
 
-    private final TestService service;
-
     @ApiOperation(value = "Simple test if server is responding")
     @GetMapping("")
     public String get() {
         return "ok";
     }
-
-    @ApiOperation(value = "Perform all tests")
-    @GetMapping("/all")
-    public boolean testAll() {
-        return service.testAll();
-    }
-
 }

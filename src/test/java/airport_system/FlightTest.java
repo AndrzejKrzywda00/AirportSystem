@@ -1,4 +1,4 @@
-package airport_system.unit;
+package airport_system;
 
 import airport_system.rest.dto.Flight;
 import airport_system.rest.services.FlightsService;
